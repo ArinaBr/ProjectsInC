@@ -1,31 +1,25 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31624.102
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3.5 Сортировка букв", "3.5 Сортировка букв\3.5 Сортировка букв.vcxproj", "{05DD9FD4-A442-45BB-9366-90E9E2FE842F}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{05DD9FD4-A442-45BB-9366-90E9E2FE842F}.Debug|x64.ActiveCfg = Debug|x64
-		{05DD9FD4-A442-45BB-9366-90E9E2FE842F}.Debug|x64.Build.0 = Debug|x64
-		{05DD9FD4-A442-45BB-9366-90E9E2FE842F}.Debug|x86.ActiveCfg = Debug|Win32
-		{05DD9FD4-A442-45BB-9366-90E9E2FE842F}.Debug|x86.Build.0 = Debug|Win32
-		{05DD9FD4-A442-45BB-9366-90E9E2FE842F}.Release|x64.ActiveCfg = Release|x64
-		{05DD9FD4-A442-45BB-9366-90E9E2FE842F}.Release|x64.Build.0 = Release|x64
-		{05DD9FD4-A442-45BB-9366-90E9E2FE842F}.Release|x86.ActiveCfg = Release|Win32
-		{05DD9FD4-A442-45BB-9366-90E9E2FE842F}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {84AA8F85-DF73-4C97-8A9B-06C41CB6EC14}
-	EndGlobalSection
-EndGlobal
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string alphabet;
+    cout << "Enter 30 letters" << endl;
+    cin >> alphabet;
+    if (alphabet.length() != 30) {
+        cout << "Error" << endl;
+    }
+    else {
+        for (int i = 0; i < 29; i++)
+        {
+            for (int j = i; j < 29; j++)
+            {
+                if (alphabet[i] > alphabet[j + 1])
+                {
+                    swap(alphabet[i], alphabet[j + 1]);
+                }
+            }
+        }
+        cout << alphabet;
+    }
+}
