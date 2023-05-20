@@ -1,31 +1,23 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31624.102
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "5.2 Решето Эратосфена", "5.2 Решето Эратосфена\5.2 Решето Эратосфена.vcxproj", "{05D0ADFC-FF22-4CA4-9A08-0258CD35A4AF}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{05D0ADFC-FF22-4CA4-9A08-0258CD35A4AF}.Debug|x64.ActiveCfg = Debug|x64
-		{05D0ADFC-FF22-4CA4-9A08-0258CD35A4AF}.Debug|x64.Build.0 = Debug|x64
-		{05D0ADFC-FF22-4CA4-9A08-0258CD35A4AF}.Debug|x86.ActiveCfg = Debug|Win32
-		{05D0ADFC-FF22-4CA4-9A08-0258CD35A4AF}.Debug|x86.Build.0 = Debug|Win32
-		{05D0ADFC-FF22-4CA4-9A08-0258CD35A4AF}.Release|x64.ActiveCfg = Release|x64
-		{05D0ADFC-FF22-4CA4-9A08-0258CD35A4AF}.Release|x64.Build.0 = Release|x64
-		{05D0ADFC-FF22-4CA4-9A08-0258CD35A4AF}.Release|x86.ActiveCfg = Release|Win32
-		{05D0ADFC-FF22-4CA4-9A08-0258CD35A4AF}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {753CE920-4B1E-4BFE-907B-75D0AA8D12B9}
-	EndGlobalSection
-EndGlobal
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int N, i, j, p;
+    cout << "Enter N" << endl;
+    cin >> N;
+    cout << "Prime numbers:" << endl;
+    int *mas = new int[N + 1];   //Выделяется достаточно памяти для размещения данных
+    for (i = 0; i <= N; i++) {
+        mas[i] = i;
+    }
+    for (p = 2; p <= N; p++) {
+        if (mas[p] != 0) {
+            cout << mas[p] << endl;
+            for (j = pow(p, 2); j <= N; j = j + p) {   //Удаляются числа кратные p: p2, p2+p, p2+2p и т. д.
+                mas[j] = 0;
+            }
+        }
+    }
+    return 0;
+}
