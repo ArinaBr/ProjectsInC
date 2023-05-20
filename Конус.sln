@@ -1,31 +1,52 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31624.102
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Конус", "Конус\Конус.vcxproj", "{C2FAA3E5-7F7C-4113-968A-AD4EF7D2B768}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C2FAA3E5-7F7C-4113-968A-AD4EF7D2B768}.Debug|x64.ActiveCfg = Debug|x64
-		{C2FAA3E5-7F7C-4113-968A-AD4EF7D2B768}.Debug|x64.Build.0 = Debug|x64
-		{C2FAA3E5-7F7C-4113-968A-AD4EF7D2B768}.Debug|x86.ActiveCfg = Debug|Win32
-		{C2FAA3E5-7F7C-4113-968A-AD4EF7D2B768}.Debug|x86.Build.0 = Debug|Win32
-		{C2FAA3E5-7F7C-4113-968A-AD4EF7D2B768}.Release|x64.ActiveCfg = Release|x64
-		{C2FAA3E5-7F7C-4113-968A-AD4EF7D2B768}.Release|x64.Build.0 = Release|x64
-		{C2FAA3E5-7F7C-4113-968A-AD4EF7D2B768}.Release|x86.ActiveCfg = Release|Win32
-		{C2FAA3E5-7F7C-4113-968A-AD4EF7D2B768}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8A6D74A0-38A6-4F8F-ABF7-FC259AD2CCDE}
-	EndGlobalSection
-EndGlobal
+#include <iostream>
+#include<cmath>
+#define PI 3.141592653589793
+using namespace std;
+
+int main()
+{
+    double v, s, h, R, r, l;
+    cout << "Enter cone height, radius of the small base of the cone, radius of the large base of the cone" << endl;
+    cin >> h >> r >> R;
+    if (h < 0 || r < 0 || R < 0) {
+        cout << "numbers must be greater then or equal to 0" << endl;
+    }
+    else if (h==0 && r==0 && R==0){
+        cout << "the figure does not exist" << endl;
+    }
+    else if (h == 0) {
+        cout << "this is a circle" << endl;
+        cout << "v=0" << endl;
+        cout << "s=" << PI * pow(R, 2) << endl;
+    }
+    else if (r == 0) {
+        cout << "this is an ordinary cone" << endl;
+        l = sqrt(pow(h, 2) + pow(R, 2));
+        cout << "v=" << (PI * pow(R, 2) * h)/3 << endl;
+        cout << "s=" << PI * R * (l+R) << endl;
+    }
+    else if (R == 0) {
+        cout << "this is an inverted cone" << endl;
+        l = sqrt(pow(h, 2) + pow(r, 2));
+        cout << "v=" << (PI * pow(r, 2) * h)/3 << endl;
+        cout << "s=" << PI * r * (l+r) << endl;
+    }
+    else if (r == 0 && R == 0) {
+        cout << "this is a straight line" << endl;
+        cout << "v=0" << endl;
+        cout << "s=0" << endl;
+    }
+    else if (r == R) {
+        cout << "this is a cylinder" << endl;
+        cout << "v=" << PI * h * pow(R, 2) << endl;
+        cout << "s=" << 2 * PI * R * (h + R) << endl;
+    }
+    else {
+        cout << "this is a truncated cone" << endl;
+        l= sqrt(pow(R - r, 2) + pow(h, 2));
+        cout << "v=" << (h * PI * (pow(R, 2) + R * r + pow(r, 2)))/3 << endl;
+        cout << "s=" << PI * (pow(R, 2) + (R + r) * l + pow(r, 2)) << endl;
+    }
+    
+    return 0;
+}
